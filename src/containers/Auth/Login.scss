@@ -1,0 +1,99 @@
+.login-background {
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+
+  padding: 30px;
+
+  .login-container {
+    width: 400px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .login-content {
+    padding: 10px;
+    .text-login {
+      text-align: center;
+      font-weight: 600;
+      font-size: 24px;
+      padding-top: 10px;
+    }
+  }
+
+  .login-input {
+    margin: 7px 0;
+    .custom-input-password {
+      position: relative;
+      i {
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .btn-login {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(
+      135deg,
+      rgba(34, 193, 195, 1) 0%,
+      rgba(253, 187, 45, 1) 100%
+    );
+    font-size: 16px;
+    color: white;
+    font-weight: 800;
+  }
+
+  .forgot-password {
+    font-size: 12px;
+  }
+
+  .social-login {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+
+    .google {
+      background: rgb(145, 9, 9);
+      font-size: 30px;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+
+    .facebook {
+      background: #307aaf;
+      font-size: 30px;
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
