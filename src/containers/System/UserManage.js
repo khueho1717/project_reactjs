@@ -6,8 +6,10 @@ import {
   getAllUsers,
   createNewUserService,
   deleteUserService,
+  updateUserService,
 } from "../../services/userService";
 import ModalUser from "./ModalUser";
+import ModalEditUser from "./ModalEditUser";
 import { emitter } from "../../utils/emitter";
 class UserManage extends Component {
   constructor(props) {
@@ -15,6 +17,8 @@ class UserManage extends Component {
     this.state = {
       arrUsers: [],
       isOpenModalUser: false,
+      isOpenModalEditUser: false,
+      userEdit: {},
     };
   }
 
@@ -39,6 +43,14 @@ class UserManage extends Component {
     });
   };
 
+  handleEditUser = (user) => {
+    // console.log("id user: ", user);
+    this.setState({
+      isOpenModalEditUser: true,
+      userEdit: user,
+    });
+  };
+
   handleDeleteUser = async (id) => {
     // alert("delete user " + id);
     try {
@@ -60,6 +72,12 @@ class UserManage extends Component {
     });
   };
 
+  toggleUserEditModal = () => {
+    this.setState({
+      isOpenModalEditUser: !this.state.isOpenModalEditUser,
+    });
+  };
+
   addNewUser = async (data) => {
     try {
       let response = await createNewUserService(data);
@@ -76,6 +94,20 @@ class UserManage extends Component {
     }
   };
 
+  editUser = async (data) => {
+    try {
+      let res = await updateUserService(data);
+      if (res && res.errCode !== 0) {
+        alert(res.message);
+      } else {
+        await this.getAllUsers();
+        this.toggleUserEditModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     let arrUsers = this.state.arrUsers;
     return (
@@ -85,6 +117,16 @@ class UserManage extends Component {
           toggleUserModal={this.toggleUserModal}
           addNewUser={this.addNewUser}
         />
+        {this.state.isOpenModalEditUser && (
+          <ModalEditUser
+            isOpen={this.state.isOpenModalEditUser}
+            toggleUserEditModal={this.toggleUserEditModal}
+            userParent={this.state.userEdit}
+            // addNewUser={this.addNewUser}
+            editUser={this.editUser}
+          />
+        )}
+
         <div className="title text-center">Manage user with Khue</div>
         <div className="mx-1">
           <button
@@ -116,7 +158,10 @@ class UserManage extends Component {
                         <td>{item.phonenumber}</td>
                         <td>{item.address}</td>
                         <td className="text-center">
-                          <button className="btn-edit">
+                          <button
+                            className="btn-edit"
+                            onClick={() => this.handleEditUser(item)}
+                          >
                             <i className="fas fa-user-edit"></i>
                           </button>
                           <button
