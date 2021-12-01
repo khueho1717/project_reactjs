@@ -1,4 +1,25 @@
 {
+    "homeheader": {
+        "speciality" : "Medical specialy",
+        "searchdoctor": "Find doctors according to specialty",
+        "hearth-facility":"Health facility",
+        "select-room": "Choose clinic hospital",
+        "doctor": "Doctor",
+        "select-doctor": "Choose a good doctor",
+        "fee": "Examination package",
+        "check-hearth": "General health check",
+        "support": "Support"
+            },
+    "banner": {
+        "title1": "MEDICAL PLATFORM",
+        "title2": "COMPREHENSIVE HEALTH CARE",
+        "child1": "Specialist",
+        "child2": "Remote examination",
+        "child3": "General examination",
+        "child4": "Medical tests",
+        "child5": "Mental health",
+        "child6": "Dental examination"
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
